@@ -12,6 +12,11 @@
   font-family: Arial, sans-serif;
 }
 
+.siteName {
+  font-weight: bold;
+  font-size: 20px;
+}
+
 body {
   background: url('/images//site/checkerboard.jpg') repeat;
   display: flex;
@@ -34,8 +39,9 @@ h1 {
 nav a {
   margin: 0 10px;
   text-decoration: none;
-  color: #333;
+  color: #195dc9;
   font-weight: bold;
+  background-color: #878787;
 }
 
 .account-link {
