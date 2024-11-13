@@ -43,6 +43,7 @@ nav a {
   color: #195dc9;
   font-weight: bold;
   background-color: #878787;
+  align-items: center;
 }
 
 .account-link {
