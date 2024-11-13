@@ -13,7 +13,7 @@
 }
 
 body {
-  background: url('/images/checkerboard.png') repeat;
+  background: url('/images//site/checkerboard.jpg') repeat;
   display: flex;
   justify-content: center;
 }
