@@ -1,12 +1,12 @@
-INSERT INTO account (first_name, last_name, email, password)
+INSERT INTO account (account_firstname, account_lastname, account_email, account_password)
 VALUES ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n');
 
 UPDATE account
 SET account_type = 'Admin'
-WHERE email = 'tony@starkent.com';
+WHERE account_email = 'tony@starkent.com';
 
 DELETE FROM account
-WHERE email = 'tony@starkent.com';
+WHERE account_email = 'tony@starkent.com';
 
 UPDATE inventory
 SET inv_description = REPLACE(inv_description, 'small interiors', 'a huge interior')
