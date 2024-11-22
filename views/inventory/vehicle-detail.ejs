@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+</head>
+<body>
+  <header>
+    <%= nav %> <!-- Navigation menu will be inserted here -->
+  </header>
+
+  <h1><%= title %></h1>
+
+  <div class="vehicle-detail">
+    <img src="<%= vehicle.inv_image %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>" class="full-size-image">
+    <p><strong>Price:</strong> <%= new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(vehicle.inv_price) %></p>
+    <p><strong>Mileage:</strong> <%= new Intl.NumberFormat('en-US').format(vehicle.inv_mileage) %> miles</p>
+    <p><strong>Year:</strong> <%= vehicle.inv_year %></p>
+    <p><strong>Description:</strong> <%= vehicle.inv_description %></p>
+  </div>
+
+</body>
+</html>
