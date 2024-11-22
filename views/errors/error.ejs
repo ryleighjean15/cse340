@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || "Error Page" %></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        h1 {
+            margin-top: 20px;
+            color: #dc3545;
+        }
+        .error-message {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .humor {
+            margin-top: 10px;
+            font-style: italic;
+            color: #6c757d;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <p class="error-message">
+        <%- message %>
+    </p>
+    <!-- <p class="humor">
+        Don’t panic! Even the best of us take wrong turns on the internet. 🤷‍♀️
+    </p> -->
+    <a href="/">Return to Safety</a>
+</body>
+</html>
