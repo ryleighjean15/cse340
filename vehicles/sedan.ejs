@@ -1,0 +1,29 @@
+<!-- Navigation -->
+<%- include('partials/navigation') %>
+  
+  <!-- Page Header -->
+  <header>
+    <h1>Sedan Vehicles</h1>
+  </header>
+  
+  <!-- Vehicle Cards -->
+  <section class="vehicle-list">
+    <% if (vehicles && vehicles.length > 0) { %>
+      <% vehicles.forEach(vehicle => { %>
+        <div class="vehicle-card">
+          <img src="<%= vehicle.image %>" alt="<%= vehicle.name %>" />
+          <h2><a href="/vehicle/<%= vehicle.id %>"><%= vehicle.name %></a></h2>
+          <p><%= vehicle.price %></p>
+
+        </div>
+      <% }) %>
+    <% } else { %>
+      <p>No sedan vehicles available at the moment. Check back later!</p>
+    <% } %>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2024 CSE Motors</p>
+  </footer>
+  

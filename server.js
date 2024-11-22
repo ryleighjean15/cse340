@@ -23,6 +23,7 @@ const utilities = require('./utilities');
  app.set("view engine", "ejs")
  app.use(expressLayouts)
  app.set("layout", "./layouts/layout") // not at views root
+ app.use(express.static('public'));
 
 /* ***********************
  * Routes
@@ -37,6 +38,32 @@ app.use(async (req, res, next) => {
 //Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
+app.get('/', (req, res) => res.render('home', { title: 'Home - CSE Motors' }));
+app.get('/custom', (req, res) => res.render('custom', { title: 'Custom - CSE Motors' }));
+app.get('/sedan', async (req, res) => {
+  // Sample sedan vehicle data
+  const sedanVehicles = [
+    { id: 1, name: "Mechanic Special", price: "$100", image: "/images/mechanic.jpg" },
+    { id: 2, name: "Ford Model T", price: "$30,000", image: "/images/model-t.jpg" },
+    { id: 3, name: "Ford Crown Victoria", price: "$10,000", image: "/images/crwn-vic.jpg" }
+  ];
+
+  try {
+    // Assuming utilities.getNav() fetches your nav links
+    const nav = await utilities.getNav();
+    res.render('sedan', {
+      title: 'Sedan Vehicles - CSE Motors',
+      nav,                // Pass navigation links
+      vehicles: sedanVehicles // Pass vehicle data to the EJS template
+    });
+  } catch (error) {
+    console.error(`Error loading sedan page: ${error.message}`);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.get('/suv', (req, res) => res.render('suv', { title: 'SUV - CSE Motors' }));
+app.get('/truck', (req, res) => res.render('truck', { title: 'Truck - CSE Motors' }));
 
 /* ***********************
 * Express Error Handler

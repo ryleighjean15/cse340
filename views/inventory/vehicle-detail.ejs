@@ -4,21 +4,58 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
+  <link rel="stylesheet" href="/css/vdetailstyles.css"> 
 </head>
 <body>
   <header>
-    <%= nav %> <!-- Navigation menu will be inserted here -->
+    <%= nav %> 
   </header>
 
-  <h1><%= title %></h1>
+  <main class="vehicle-detail-container">
+    <!-- Header Section -->
+    <section class="vehicle-header">
+      <h1><%= vehicle.inv_year %> <%= vehicle.inv_make %> <%= vehicle.inv_model %></h1>
+      <p class="price">No-Haggle Price: <strong>$<%= vehicle.inv_price %></strong></p>
+    </section>
 
-  <div class="vehicle-detail">
-    <img src="<%= vehicle.inv_image %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>" class="full-size-image">
-    <p><strong>Price:</strong> <%= new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(vehicle.inv_price) %></p>
-    <p><strong>Mileage:</strong> <%= new Intl.NumberFormat('en-US').format(vehicle.inv_mileage) %> miles</p>
-    <p><strong>Year:</strong> <%= vehicle.inv_year %></p>
-    <p><strong>Description:</strong> <%= vehicle.inv_description %></p>
-  </div>
+    <!-- Image and Gallery Section -->
+    <section class="vehicle-gallery">
+      <img src="<%= vehicle.inv_image %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>" class="main-image">
+      <div class="thumbnail-gallery">
+        <!-- Replace with dynamic thumbnails if applicable -->
+        <img src="<%= vehicle.inv_thumbnail1 %>" alt="Thumbnail 1">
+        <img src="<%= vehicle.inv_thumbnail2 %>" alt="Thumbnail 2">
+        <img src="<%= vehicle.inv_thumbnail3 %>" alt="Thumbnail 3">
+      </div>
+    </section>
 
+    <!-- Details Section -->
+    <section class="vehicle-details">
+      <ul>
+        <li><strong>Mileage:</strong> <%= vehicle.inv_mileage %> miles</li>
+        <li><strong>MPG:</strong> 29/37 (City/Highway)</li>
+        <li><strong>Exterior Color:</strong> <%= vehicle.inv_color %></li>
+        <li><strong>Interior Color:</strong> <%= vehicle.inv_int_color %></li>
+        <li><strong>Fuel Type:</strong> <%= vehicle.inv_fuel_type %></li>
+        <li><strong>Drivetrain:</strong> <%= vehicle.inv_drivetrain %></li>
+        <li><strong>Transmission:</strong> <%= vehicle.inv_transmission %></li>
+        <li><strong>VIN:</strong> <%= vehicle.inv_vin %></li>
+      </ul>
+    </section>
+
+    <!-- Action Buttons -->
+    <section class="action-buttons">
+      <button class="btn green">Start My Purchase</button>
+      <button class="btn">Contact Us</button>
+      <button class="btn">Schedule Test Drive</button>
+      <button class="btn">Apply for Financing</button>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info">
+      <p>Call Us: <strong>801-396-7886</strong></p>
+      <p>Visit Us: [Insert Address]</p>
+    </section>
+  </main>
 </body>
 </html>
