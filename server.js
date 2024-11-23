@@ -6,7 +6,6 @@
  * Require Statements
  *************************/
 const express = require("express")
-
 const env = require("dotenv").config()
 const app = express()
 const static = require("./routes/static")
@@ -14,7 +13,7 @@ const expressLayouts = require("express-ejs-layouts")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require('./routes/inventoryRoute'); // Adjust the path as needed
 const utilities = require('./utilities');
-
+const path = require('path');
 
 
 /* ***********************
@@ -23,12 +22,35 @@ const utilities = require('./utilities');
  app.set("view engine", "ejs")
  app.use(expressLayouts)
  app.set("layout", "./layouts/layout") // not at views root
- app.use(express.static('public'));
+ app.use(express.static("public"));
+ app.set('views', path.join(__dirname, 'views'));
 
 /* ***********************
  * Routes
  *************************/
 app.use(static)
+app.use("/inv", inventoryRoute);
+
+// Sedan Vehicles Route
+app.get("/sedan", async (req, res, next) => {
+  try {
+    // Sedan data
+    const sedanData = [
+      { name: 'Mechanic Special', price: 100, image: '/images/vehicles/mechanic.jpg' },
+      { name: 'Ford Model T', price: 30000, image: '/images/vehicles/model-t.jpg' },
+      { name: 'Ford Crown Victoria', price: 10000, image: '/images/vehicles/crwn-vic.jpg' },
+    ];
+    let nav = await utilities.getNav(); // Assuming utilities.getNav() generates navigation dynamically
+    res.render("sedan", {
+      title: "Sedan Vehicles",
+      sedans: sedanData,
+      nav, // Pass the navigation menu to the view
+      styles: "/css/vdetailstyles.css"
+    });
+  } catch (error) {
+    next(error); // Pass any errors to the error handler
+  }
+});
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
@@ -37,7 +59,7 @@ app.use(async (req, res, next) => {
 
 //Index route
 app.get("/", utilities.handleErrors(baseController.buildHome))
-// app.use("/inv", inventoryRoute)
+
 
 /* ***********************
 * Express Error Handler

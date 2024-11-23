@@ -66,4 +66,29 @@ Util.buildClassificationGrid = async function(data){
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
 
+/* ****************************************
+ * Builds the HTML for displaying a single vehicle's details
+ **************************************** */
+Util.buildVehicleHTML = function(vehicle) {
+  if (!vehicle || !vehicle.inv_id || !vehicle.inv_make || !vehicle.inv_model || !vehicle.inv_price) {
+    return "<p>Vehicle details are not available at this time.</p>";
+  }
+
+  // Format the vehicle HTML
+  const vehicleHTML = `
+    <div class="vehicle-details">
+      <h2>${vehicle.inv_make} ${vehicle.inv_model}</h2>
+      <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${vehicle.inv_model}" />
+      <p><strong>Price:</strong> $${new Intl.NumberFormat('en-US').format(vehicle.inv_price)}</p>
+      <p><strong>Description:</strong> ${vehicle.inv_description || "No description available."}</p>
+      <p><strong>Color:</strong> ${vehicle.inv_color || "No color information."}</p>
+      <p><strong>Mileage:</strong> ${vehicle.inv_miles ? new Intl.NumberFormat('en-US').format(vehicle.inv_miles) : "No mileage data."} miles</p>
+    </div>
+  `;
+  
+  return vehicleHTML;
+}
+
+
+
 module.exports = Util

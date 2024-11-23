@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head') %>
-    
-<body>
-    <div id="wrapper">
-        <%- include('../partials/header') %>
-        <br>
-        <%- include('../partials/navigation') %>
-        <main>
-            <%- body %>
-        </main>
-        <%- include('../partials/footer') %>
-    </div>
-    <script src="/js/script.js"></script>
+    <head>
+        <%- include('../partials/head') %>
+        <% if (typeof styles !== "undefined") { %>
+            <link rel="stylesheet" href="<%= styles %>">
+        <% } %>
+    </head>
+    <body>
+        <div id="wrapper">
+            <%- include('../partials/header') %>
+            <br>
+            <%- include('../partials/navigation') %>
+            <main>
+                <%- body %>
+            </main>
+            <%- include('../partials/footer') %>
+        </div>
+        <script src="/js/script.js"></script>
 </body>
 </html>

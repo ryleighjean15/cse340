@@ -1,4 +1,4 @@
-body {
+/* body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -98,5 +98,55 @@ body {
       width: 100%;
       margin-bottom: 10px;
     }
+  }
+   */
+
+   body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+  }
+  
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+  }
+  
+  main {
+    padding: 20px;
+  }
+  
+  .vehicles {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .vehicle-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    width: 200px;
+    padding: 10px;
+  }
+  
+  .vehicle-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f4f4f4;
   }
   

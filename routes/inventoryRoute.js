@@ -8,3 +8,13 @@
 // router.get("/detail/:invId", invController.showVehicleDetail);
 
 // module.exports = router;
+
+const express = require('express');
+const router = express.Router();
+
+// Example route
+router.get('/', (req, res) => {
+  res.send('Inventory home page');
+});
+
+module.exports = router; // Ensure this is correctly exported

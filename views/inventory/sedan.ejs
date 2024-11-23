@@ -1,0 +1,11 @@
+<% layout('layout') %>
+<h1>Sedan Vehicles</h1>
+<div class="vehicles">
+  <% sedans.forEach(sedan => { %>
+    <div class="vehicle-card">
+      <img src="<%= sedan.image %>" alt="<%= sedan.name %>">
+      <h2><%= sedan.name %></h2>
+      <p>$<%= sedan.price.toLocaleString() %></p>
+    </div>
+  <% }); %>
+</div>
